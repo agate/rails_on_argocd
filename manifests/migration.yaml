@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rails-on-argocd-migration
+  namespace: rails-on-argocd
+  labels:
+    app.kubernetes.io/name: rails-on-argocd-migration
+spec:
+  template:
+    spec:
+      containers:
+      - name: migration
+        image: agate/rails-on-argocd:master
+        command:
+        - /bin/sh
+        - -c
+        - bundle exec rails db:create && bundle exec rails db:migrate
+        env:
+        - name: DB_HOST
+          value: rails-on-argocd-db.rails-on-argocd.svc.cluster.local
+        - name: DB_PORT
+          value: '5432'
+        - name: DB_USER
+          value: postgres
+        - name: DB_PASS
+          value: postgres
+      restartPolicy: Never
+  backoffLimit: 4
