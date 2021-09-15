@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/agate/rails_on_argocd.git
     targetRevision: master
-    path: manifests
+    path: versions/v1/argocd
   destination:
     namespace: rails-on-argocd
     server: https://kubernetes.default.svc
