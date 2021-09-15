@@ -1,15 +1,27 @@
 version: '3'
 services:
-  app:
+  app: &app
     image: rails-on-argocd
-    build: .
+    build:
+      context: .
+      dockerfile: versions/base/Dockerfile
     ports:
       - 3000:3000
     working_dir: /app
     environment:
       - DB_HOST=db
+  appv1:
+    <<: *app
     volumes:
-      - .:/app
+      - ./rails:/app
+  appv2:
+    <<: *app
+    volumes:
+      - ./rails:/app
+      - ./versions/v2/app/controllers/main_controller.rb:/app/app/controllers/main_controller.rb
+      - ./versions/v2/app/models/user.rb:/app/app/models/user.rb
+      - ./versions/v2/config/routes.rb:/app/config/routes.rb
+      - ./versions/v2/db/migrate:/app/db/migrate
   db:
     image: postgres
     ports:

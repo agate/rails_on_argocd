@@ -6,10 +6,12 @@ RUN apk add build-base \
             nodejs npm && \
     npm install --global yarn
 
-COPY Gemfile* /app/
+COPY rails/Gemfile* /app/
+COPY docker-entrypoint.sh /usr/local/bin/
 WORKDIR /app
 RUN bundle
-COPY . /app/
 
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["rails", "server", "-b", "0.0.0.0"]
+
+COPY rails /app/

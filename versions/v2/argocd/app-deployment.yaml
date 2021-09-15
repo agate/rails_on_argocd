@@ -17,7 +17,7 @@ spec:
     spec:
       initContainers:
       - name: migration-checker
-        image: agate/rails-on-argocd:master
+        image: agate/rails-on-argocd:v2
         command:
         - /bin/sh
         - -c
@@ -33,7 +33,7 @@ spec:
           value: postgres
       containers:
       - name: app
-        image: agate/rails-on-argocd:master
+        image: agate/rails-on-argocd:v2
         ports:
         - name: app
           containerPort: 3000

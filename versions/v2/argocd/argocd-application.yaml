@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rails-on-argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/agate/rails_on_argocd.git
+    targetRevision: master
+    path: manifests
+  destination:
+    namespace: rails-on-argocd
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated: {}

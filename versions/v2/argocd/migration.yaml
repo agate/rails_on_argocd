@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: migration
-        image: agate/rails-on-argocd:master
+        image: agate/rails-on-argocd:v2
         command:
         - /bin/sh
         - -c
