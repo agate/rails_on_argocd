@@ -1,4 +1,4 @@
-FROM agate/rails-on-argocd:base
+FROM agate/rails-on-argocd:v1
 
 COPY version/v2/app/controllers/main_controller.rb /app/app/controllers/main_controller.rb
 COPY version/v2/app/models/user.rb /app/app/models/user.rb

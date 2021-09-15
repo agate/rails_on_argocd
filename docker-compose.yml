@@ -1,10 +1,10 @@
 version: '3'
 services:
   app: &app
-    image: rails-on-argocd
+    image: agate/rails-on-argocd:v1
     build:
       context: .
-      dockerfile: versions/base/Dockerfile
+      dockerfile: versions/v1/Dockerfile
     ports:
       - 3000:3000
     working_dir: /app
@@ -16,6 +16,10 @@ services:
       - ./rails:/app
   appv2:
     <<: *app
+    image: agate/rails-on-argocd:v2
+    build:
+      context: .
+      dockerfile: versions/v1/Dockerfile
     volumes:
       - ./rails:/app
       - ./versions/v2/app/controllers/main_controller.rb:/app/app/controllers/main_controller.rb
