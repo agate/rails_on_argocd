@@ -21,7 +21,7 @@ spec:
         command:
         - /bin/sh
         - -c
-        - until bundle exec rails db:migrate:status; do echo "waiting for db get migrated"; sleep 2; done
+        - until bundle exec rails db:abort_if_pending_migrations; do echo "waiting for db get migrated"; sleep 2; done
         env:
         - name: DB_HOST
           value: rails-on-argocd-db.rails-on-argocd.svc.cluster.local
