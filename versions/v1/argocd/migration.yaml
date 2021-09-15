@@ -1,10 +1,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: rails-on-argocd-migration
+  name: rails-on-argocd-migration-v1
   namespace: rails-on-argocd
   labels:
-    app.kubernetes.io/name: rails-on-argocd-migration
+    app.kubernetes.io/name: rails-on-argocd-migration-v1
 spec:
   template:
     spec:
