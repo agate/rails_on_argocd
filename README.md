@@ -19,7 +19,7 @@
    1. How to wait when database ready before start the application container.
    2. How to run database init script to create database / tables
 
-   After ArgoCD synced. Run `kubectl port-forward -n rails-on-argocd svc/rails-on-argocd-app 3000:3000` and access http://localhost:3000
+   After ArgoCD synced. Run `kubectl port-forward -n rails-on-argocd svc/rails-on-argocd-app 3000:3000` and access http://localhost:3000. You should see the default rails welcome page.
 
 3. Apply V2
 
@@ -29,4 +29,4 @@
 
    1. Before the database migrate be executed. The rails server still running in the old version. The new container will be created after the all the migrations are executed.
 
-   After ArgoCD synced. Stop the previous port-forward command and restart the port-forward by running `kubectl port-forward -n rails-on-argocd svc/rails-on-argocd-app 3000:3000` and access http://localhost:3000
+   After ArgoCD synced. Stop the previous port-forward command and restart the port-forward by running `kubectl port-forward -n rails-on-argocd svc/rails-on-argocd-app 3000:3000` and access http://localhost:3000. You should see a json output which contains all two users data (sam / dean)
