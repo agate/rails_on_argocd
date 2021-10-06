@@ -16,8 +16,13 @@
 
    What we can learn from this version?
 
-   1. How to wait when database ready before start the application container.
-   2. How to run database init script to create database / tables
+   1. How ArgoCD sync wave works.
+      1. You can see the namespace get created first.
+      2. Then the DB deployment and then the DB service.
+      3. The migration job will be triggered after DB ready. And it will be destroyed after it completes.
+      4. At the end all the other manifest files get synced.
+   2. How to wait when database ready before start the application container.
+   3. How to run database init script to create database / tables
 
    After ArgoCD synced. Run `kubectl port-forward -n rails-on-argocd svc/rails-on-argocd-app 3000:3000` and access http://localhost:3000. You should see the default rails welcome page.
 
