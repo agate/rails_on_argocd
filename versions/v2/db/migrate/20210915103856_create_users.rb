@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
 
     # pretend this is a long migration
     # so that we can keep our eyes on argocd ui
-    sleep 120
+    puts "Sleep 1 minutes for allowing you test if the current application is still using the old version."
+    sleep 60
   end
 end
