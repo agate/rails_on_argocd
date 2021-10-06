@@ -5,8 +5,6 @@ metadata:
   namespace: rails-on-argocd
   labels:
     app.kubernetes.io/name: rails-on-argocd-app
-  annotations:
-    argocd.argoproj.io/sync-wave: "5"
 spec:
   replicas: 1
   selector:
